@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/dsmackyball
+dsmackyball.so
+dsmackyball.dylib
+dsmackyball.dll
+dsmackyball.a
+dsmackyball.lib
+dsmackyball-test-*
+*.exe
+*.o
+*.obj
+*.lst

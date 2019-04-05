@@ -1,0 +1,12 @@
+{
+	"authors": [
+		"techcogs"
+	],
+	"copyright": "Copyright © 2019, techcogs",
+	"dependencies": {
+		"dgame": "~>0.6.6"
+	},
+	"description": "A game almost just like Pong.",
+	"license": "GPLv3",
+	"name": "dsmackyball"
+}
