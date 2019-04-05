@@ -1,4 +1,4 @@
-# DSmakcyBall
+# DSmackyBall
 
 A Pong game written in the D programming language with the Dgame library.
 
