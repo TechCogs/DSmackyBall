@@ -66,7 +66,7 @@ void main() {
 	GameObject paddle2 = new GameObject(0, 0, PADDLEW, PADDLEH);
 	paddle2.setPosition(WIDTH - PADDLEW - 20, 20);
 	paddle2.setColor(Color4b.White);
-	paddle2.speed = 0.6;
+	paddle2.speed = 0.2;
 	objects["paddle2"] = paddle2;
 
 	GameObject ball = new GameObject(0, 0, BALLW, BALLH);

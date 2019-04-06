@@ -16,6 +16,9 @@ class GameStatePlaying : GameState {
 
   uint t;
 
+  bool p2moveUp = false;
+  bool p2moveDown = false;
+
   public:
 
   this(ref GameObject[string] objects, ref Window win) {
@@ -27,7 +30,18 @@ class GameStatePlaying : GameState {
       switch(evt.type) {
         case Event.Type.KeyDown:
           if (evt.keyboard.key == Keyboard.Key.Up) {
-            paddle2.y = paddle2.y - paddle2.speed * t;
+            p2moveUp = true;
+          }
+          else if (evt.keyboard.key == Keyboard.Key.Down) {
+            p2moveDown = true;
+          }
+        break;
+        case Event.Type.KeyUp:
+          if (evt.keyboard.key == Keyboard.Key.Up) {
+            p2moveUp = false;
+          }
+          else if (evt.keyboard.key == Keyboard.Key.Down) {
+            p2moveDown = false;
           }
         break;
         case Event.Type.Quit:
@@ -39,9 +53,9 @@ class GameStatePlaying : GameState {
     }
 
     t = sw.getElapsedTicks;
+    sw.reset();
     ball.x = ball.x + ball.speed * ballmovex * t;
     ball.y = ball.y + ball.speed * ballmovey * t;
-    sw.reset();
 
     if (ball.x + ball.width >= field.width) {
       ballmovex = -ballmovex;
@@ -54,6 +68,13 @@ class GameStatePlaying : GameState {
     }
     if (ball.y + ball.height >= field.height) {
       ballmovey = -ballmovey;
+    }
+
+    if (p2moveUp) {
+      paddle2.y = paddle2.y - paddle2.speed * t;
+    }
+    else if (p2moveDown) {
+      paddle2.y = paddle2.y + paddle2.speed * t;
     }
 
     win.clear();
