@@ -1,22 +1,14 @@
-module GameState;
+module GameStatePlaying;
 
 import Dgame.Window;
 import Dgame.Window.Event;
 
 import GameObject;
+import GameState;
 
-class GameState {
+class GameStatePlaying : GameState {
 
-  protected:
-
-  Event evt;
-
-  bool running = true;
-
-  public:
-
-  bool render(ref GameObject[string] objects, ref Window win) {
-
+  override bool render(ref GameObject[string] objects, ref Window win) {
     while(win.poll(&evt)) {
       switch(evt.type) {
         case Event.Type.Quit:
