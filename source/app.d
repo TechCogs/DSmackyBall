@@ -29,6 +29,9 @@ enum HEIGHT = 600;
 enum PADDLEW = 10;
 enum PADDLEH = 65;
 
+enum BALLW = 15;
+enum BALLH = 15;
+
 void main() {
 	Window win = Window(WIDTH, HEIGHT, "DSmackyBall");
 	win.setVerticalSync(Window.VerticalSync.Enable);
@@ -65,7 +68,7 @@ void main() {
 	paddle2.setColor(Color4b.White);
 	objects["paddle2"] = paddle2;
 
-	GameObject ball = new GameObject(0, 0, 15, 15);
+	GameObject ball = new GameObject(0, 0, BALLW, BALLH);
 	ball.setPosition(50, 50);
 	ball.setColor(Color4b.White);
 	ball.speed = 0.2;
