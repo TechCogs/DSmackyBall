@@ -87,7 +87,7 @@ void main() {
 		ball.y = ball.y + ball.speed * ballmovey * t;
 		sw.reset();
 
-		if (ball.x + 15 >= WIDTH - 10) {
+		if (ball.x + ball.width >= WIDTH - 10) {
 			ballmovex = -ballmovex;
 		}
 		if (ball.x <= 5) {
@@ -96,7 +96,7 @@ void main() {
 		if (ball.y <= 5) {
 			ballmovey = -ballmovey;
 		}
-		if (ball.y + 15 >= HEIGHT - 15) {
+		if (ball.y + ball.height >= HEIGHT - 15) {
 			//ball.setPosition(ball.x, ball.y);
 			//ball.setPosition(ball.x, HEIGHT - 15);
 			ballmovey = -ballmovey;
