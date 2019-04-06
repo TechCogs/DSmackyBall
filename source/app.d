@@ -21,6 +21,7 @@ import Dgame.System.StopWatch;
 
 import GameObject;
 import GameState;
+import GameStatePlaying;
 
 enum WIDTH = 800;
 enum HEIGHT = 600;
@@ -76,7 +77,7 @@ void main() {
 	bool running = true;
 	Event evt;
 	StopWatch sw = StopWatch();
-	GameState test;
+	state["playing"] = new GameStatePlaying();
 
 	while(running) {
 		/*ballmovex = ball.speed * sw.getElapsedTicks();
@@ -126,6 +127,6 @@ void main() {
 		win.draw(paddle2);
 		win.draw(ball);
 		win.display();*/
-		running = test.render(objects, win);
+		running = state["playing"].render(objects, win);
 	}
 }
