@@ -74,20 +74,20 @@ void main() {
 	ball.speed = 0.2;
 	objects["ball"] = ball;
 	//float ballmovex, ballmovey;
-	int ballmovex = 1;
-	int ballmovey = 1;
+	//int ballmovex = 1;
+	//int ballmovey = 1;
 
 	bool running = true;
 	Event evt;
 	StopWatch sw = StopWatch();
-	state["playing"] = new GameStatePlaying();
+	state["playing"] = new GameStatePlaying(objects, win);
 
 	while(running) {
 		/*ballmovex = ball.speed * sw.getElapsedTicks();
 		ballmovey = ballmovex;*/
-		immutable uint t = sw.getElapsedTicks;
+		//immutable uint t = sw.getElapsedTicks;
 		//ball.setPosition(ball.x + ball.speed * t, ball.y + ball.speed * t);
-		ball.x = ball.x + ball.speed * ballmovex * t;
+		/*ball.x = ball.x + ball.speed * ballmovex * t;
 		ball.y = ball.y + ball.speed * ballmovey * t;
 		sw.reset();
 
@@ -99,17 +99,17 @@ void main() {
 		}
 		if (ball.y <= 5) {
 			ballmovey = -ballmovey;
-		}
-		if (ball.y + ball.height >= HEIGHT - 15) {
+		}*/
+		//if (ball.y + ball.height >= HEIGHT - 15) {
 			//ball.setPosition(ball.x, ball.y);
 			//ball.setPosition(ball.x, HEIGHT - 15);
-			ballmovey = -ballmovey;
+			//ballmovey = -ballmovey;
 			//ballmovey = -ballmovey;
 			/*writeln("Before times:  ", ballmovey);
 			//ballmovey *= -1;
 			ballmovey = -ballmovey;
 			writeln("After times:  ", ballmovey);*/
-		}
+		//}
 		//ball.move(ballmovex, ballmovey);
 		//ball.setPosition(ball.x + ballmovex, ball.y + ballmovey);
 		/*while(win.poll(&evt)) {
@@ -130,6 +130,6 @@ void main() {
 		win.draw(paddle2);
 		win.draw(ball);
 		win.display();*/
-		running = state["playing"].render(objects, win);
+		running = state["playing"].render();
 	}
 }
