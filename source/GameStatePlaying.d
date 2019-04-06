@@ -70,6 +70,10 @@ class GameStatePlaying : GameState {
       ballmovey = -ballmovey;
     }
 
+    if (ball.x + ball.width >= paddle2.x && ball.y >= paddle2.y && ball.y <= paddle2.y + paddle2.height) {
+      ballmovex = -ballmovex;
+    }
+
     if (p2moveUp) {
       paddle2.y = paddle2.y - paddle2.speed * t;
     }
