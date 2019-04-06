@@ -108,7 +108,7 @@ void main() {
 		}
 		//ball.move(ballmovex, ballmovey);
 		//ball.setPosition(ball.x + ballmovex, ball.y + ballmovey);
-		while(win.poll(&evt)) {
+		/*while(win.poll(&evt)) {
 			switch(evt.type) {
 				case Event.Type.Quit:
 					running = false;
@@ -117,7 +117,7 @@ void main() {
 				default:
 				break;
 			}
-		}
+		}*/
 
 		/*win.clear();
 		win.draw(field);
@@ -126,6 +126,6 @@ void main() {
 		win.draw(paddle2);
 		win.draw(ball);
 		win.display();*/
-		test.render(objects, win);
+		running = test.render(objects, win);
 	}
 }
