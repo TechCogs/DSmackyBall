@@ -2,6 +2,7 @@ module GameStatePlaying;
 
 import Dgame.Window;
 import Dgame.Window.Event;
+import Dgame.System.Keyboard;
 
 import GameObject;
 import GameState;
@@ -13,6 +14,8 @@ class GameStatePlaying : GameState {
   int ballmovex = 1;
   int ballmovey = 1;
 
+  uint t;
+
   public:
 
   this(ref GameObject[string] objects, ref Window win) {
@@ -22,6 +25,11 @@ class GameStatePlaying : GameState {
   override bool render() {
     while(win.poll(&evt)) {
       switch(evt.type) {
+        case Event.Type.KeyDown:
+          if (evt.keyboard.key == Keyboard.Key.Up) {
+            paddle2.y = paddle2.y - paddle2.speed * t;
+          }
+        break;
         case Event.Type.Quit:
           running = false;
         break;
@@ -30,7 +38,7 @@ class GameStatePlaying : GameState {
       }
     }
 
-    immutable uint t = sw.getElapsedTicks;
+    t = sw.getElapsedTicks;
     ball.x = ball.x + ball.speed * ballmovex * t;
     ball.y = ball.y + ball.speed * ballmovey * t;
     sw.reset();
