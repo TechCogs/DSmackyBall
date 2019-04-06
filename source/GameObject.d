@@ -24,6 +24,9 @@ final class GameObject : Shape {
       Vertex(x, y + height)
       ]
       );
+
+      width_ = width;
+      height_ = height;
   }
 
   this(in Vector2f first, in Vector2f second) {
