@@ -61,6 +61,7 @@ void main() {
 	GameObject paddle1 = new GameObject(0, 0, PADDLEW, PADDLEH);
 	paddle1.setPosition(20, 20);
 	paddle1.setColor(Color4b.White);
+	paddle1.speed = 0.2;
 	objects["paddle1"] = paddle1;
 
 	GameObject paddle2 = new GameObject(0, 0, PADDLEW, PADDLEH);

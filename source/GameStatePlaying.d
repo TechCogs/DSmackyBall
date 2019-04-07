@@ -1,5 +1,7 @@
 module GameStatePlaying;
 
+import std.stdio;
+
 import Dgame.Window;
 import Dgame.Window.Event;
 import Dgame.System.Keyboard;
@@ -14,6 +16,8 @@ class GameStatePlaying : GameState {
   int ballmovex = 1;
   int ballmovey = 1;
 
+  float centerx;
+
   uint t;
 
   bool p2moveUp = false;
@@ -23,6 +27,7 @@ class GameStatePlaying : GameState {
 
   this(ref GameObject[string] objects, ref Window win) {
     super(objects, win);
+    centerx = center.getVertices()[0].tupleof[0].x;
   }
 
   override bool render() {
@@ -72,6 +77,15 @@ class GameStatePlaying : GameState {
 
     if (ball.x + ball.width >= paddle2.x && ball.y >= paddle2.y && ball.y <= paddle2.y + paddle2.height) {
       ballmovex = -ballmovex;
+    }
+
+    if (ball.x < centerx) {
+      if (ball.y < paddle1.y) {
+        paddle1.y = paddle1.y - paddle1.speed * t;
+      }
+      else {
+        paddle1.y = paddle1.y + paddle1.speed * t;
+      }
     }
 
     if (p2moveUp) {

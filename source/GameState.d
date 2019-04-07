@@ -17,6 +17,7 @@ class GameState {
   GameObject[string]* objects;
   GameObject ball;
   GameObject field;
+  GameObject center;
   GameObject paddle1;
   GameObject paddle2;
   Window* win;
@@ -30,6 +31,7 @@ class GameState {
     this.win = &win;
     ball = objects["ball"];
     field = objects["field"];
+    center = objects["center"];
     paddle1 = objects["paddle1"];
     paddle2 = objects["paddle2"];
     sw = StopWatch();
