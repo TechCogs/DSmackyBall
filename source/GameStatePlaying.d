@@ -79,13 +79,44 @@ class GameStatePlaying : GameState {
       ball.y = field.height - ball.height;
     }
 
-    if (ball.x + ball.width >= paddle2.x && ball.y >= paddle2.y && ball.y <= paddle2.y + paddle2.height) {
+    /*if (ball.x + ball.width >= paddle2.x && ball.y >= paddle2.y && ball.y <= paddle2.y + paddle2.height) {
       ballmovex = -ballmovex;
       ball.x = paddle2.x - ball.width;
+    }*/
+    if (ball.x + ball.width >= paddle2.x) {
+      // Ball hits on top edge of the paddle
+      if (ball.y + ball.height >= paddle2.y && ball.y <= paddle2.y) {
+        ballmovex = -ballmovex;
+        ball.x = paddle2.x - ball.width;
+      }
+      // Ball hits in the middle of paddle
+      else if (ball.y >= paddle2.y && ball.y + ball.height <= paddle2.y + paddle2.height) {
+        ballmovex = -ballmovex;
+        ball.x = paddle2.x - ball.width;
+      }
+      // Ball hits on the bottom edge of the paddle
+      else if (ball.y + ball.height >= paddle2.y + paddle2.height && ball.y <= paddle2.y + paddle2.height) {
+        ballmovex = -ballmovex;
+        ball.x = paddle2.x - ball.width;
+      }
     }
-    else if (ball.x <= paddle1.x && ball.y >= paddle1.y && ball.y <= paddle1.y + paddle1.height) {
-      ballmovex = -ballmovex;
-      ball.x = paddle1.x;
+
+    else if (ball.x <= paddle1.x) {
+      // Ball hits on top edge of the paddle
+      if (ball.y + ball.height >= paddle1.y && ball.y <= paddle1.y) {
+        ballmovex = -ballmovex;
+        ball.x = paddle1.x;
+      }
+      // Ball hits in the middle of paddle
+      else if (ball.y >= paddle1.y && ball.y + ball.height <= paddle1.y + paddle1.height) {
+        ballmovex = -ballmovex;
+        ball.x = paddle1.x;
+      }
+      // Ball hits on the bottom edge of the paddle
+      else if (ball.y + ball.height >= paddle1.y + paddle1.height && ball.y <= paddle1.y + paddle1.height) {
+        ballmovex = -ballmovex;
+        ball.x = paddle1.x;
+      }
     }
 
     if (ball.x < centerx) {
