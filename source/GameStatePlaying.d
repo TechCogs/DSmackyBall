@@ -64,22 +64,28 @@ class GameStatePlaying : GameState {
 
     if (ball.x + ball.width >= field.width) {
       ballmovex = -ballmovex;
+      ball.x = field.width - ball.width;
     }
     if (ball.x <= field.x + 5) {
       ballmovex = -ballmovex;
+      ball.x = field.x + 5;
     }
     if (ball.y <= field.y + 5) {
       ballmovey = -ballmovey;
+      ball.y = field.y + 5;
     }
     if (ball.y + ball.height >= field.height) {
       ballmovey = -ballmovey;
+      ball.y = field.height - ball.height;
     }
 
     if (ball.x + ball.width >= paddle2.x && ball.y >= paddle2.y && ball.y <= paddle2.y + paddle2.height) {
       ballmovex = -ballmovex;
+      ball.x = paddle2.x - ball.width;
     }
     else if (ball.x <= paddle1.x && ball.y >= paddle1.y && ball.y <= paddle1.y + paddle1.height) {
       ballmovex = -ballmovex;
+      ball.x = paddle1.x;
     }
 
     if (ball.x < centerx) {
