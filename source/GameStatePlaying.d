@@ -78,6 +78,9 @@ class GameStatePlaying : GameState {
     if (ball.x + ball.width >= paddle2.x && ball.y >= paddle2.y && ball.y <= paddle2.y + paddle2.height) {
       ballmovex = -ballmovex;
     }
+    else if (ball.x <= paddle1.x && ball.y >= paddle1.y && ball.y <= paddle1.y + paddle1.height) {
+      ballmovex = -ballmovex;
+    }
 
     if (ball.x < centerx) {
       if (ball.y < paddle1.y) {
