@@ -23,10 +23,21 @@ class GameStatePlaying : GameState {
   bool p2moveUp = false;
   bool p2moveDown = false;
 
+  GameObject ball;
+  GameObject field;
+  GameObject center;
+  GameObject paddle1;
+  GameObject paddle2;
+
   public:
 
   this(ref GameObject[string] objects, ref Window win) {
     super(objects, win);
+    ball = objects["ball"];
+    field = objects["field"];
+    center = objects["center"];
+    paddle1 = objects["paddle1"];
+    paddle2 = objects["paddle2"];
     centerx = center.getVertices()[0].tupleof[0].x;
   }
 
