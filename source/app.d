@@ -21,6 +21,7 @@ import Dgame.System.StopWatch;
 
 import GameObject;
 import GameState;
+import GameStateTitle;
 import GameStatePlaying;
 
 enum WIDTH = 800;
@@ -37,7 +38,8 @@ void main() {
 	win.setVerticalSync(Window.VerticalSync.Enable);
 	win.setClearColor(Color4b.Black);
 
-	GameObject[string] objects;
+	GameObject[string] titleObjects;
+	GameObject[string] playingObjects;
 	GameState[string] state;
 
 	/*Vertex[4] v;
@@ -47,42 +49,45 @@ void main() {
 	v[3] = Vertex(10, 100);
 
 	Shape field = new GameObject(Geometry.Quads, v);*/
-	GameObject field = new GameObject(5, 5, WIDTH - 10, HEIGHT - 15);
+	/*GameObject field = new GameObject(5, 5, WIDTH - 10, HEIGHT - 15);
 	field.setPosition(0, 0);
 	field.setColor(Color4b.White);
 	field.fill = Shape.Fill.Line;
-	//objects["field"] = field;
+	//objects["field"] = field;*/
 
-	GameObject topField = new GameObject(Vector2f(5, 5), Vector2f(WIDTH - 5, 5));
+	GameObject topField = new GameObject(Vector2f(5, 5), Vector2f(WIDTH - 5, 5), "topField");
 	topField.setColor(Color4b.White);
-	objects["topField"] = topField;
+	titleObjects[topField.name] = topField;
+	playingObjects[topField.name] = topField;
 
-	GameObject bottomField = new GameObject(Vector2f(5, HEIGHT - 15), Vector2f(WIDTH - 5, HEIGHT - 15));
+	GameObject bottomField = new GameObject(Vector2f(5, HEIGHT - 15), Vector2f(WIDTH - 5, HEIGHT - 15), "bottomField");
 	bottomField.setColor(Color4b.White);
-	objects["bottomField"] = bottomField;
+	titleObjects[bottomField.name] = bottomField;
+	playingObjects[bottomField.name] = bottomField;
 
-	GameObject center = new GameObject(Vector2f((WIDTH - 10) / 2, 5), Vector2f((WIDTH - 10) / 2, HEIGHT - 15));
+	GameObject center = new GameObject(Vector2f((WIDTH - 10) / 2, 5), Vector2f((WIDTH - 10) / 2, HEIGHT - 15), "center");
 	center.setColor(Color4b.White);
 	//center.fill = Shape.Fill.Line;
-	objects["center"] = center;
+	titleObjects[center.name] = center;
+	playingObjects[center.name] = center;
 
-	GameObject paddle1 = new GameObject(0, 0, PADDLEW, PADDLEH);
+	GameObject paddle1 = new GameObject(0, 0, PADDLEW, PADDLEH, "paddle1");
 	paddle1.setPosition(20, 20);
 	paddle1.setColor(Color4b.White);
 	paddle1.speed = 0.2;
-	objects["paddle1"] = paddle1;
+	playingObjects[paddle1.name] = paddle1;
 
-	GameObject paddle2 = new GameObject(0, 0, PADDLEW, PADDLEH);
+	GameObject paddle2 = new GameObject(0, 0, PADDLEW, PADDLEH, "paddle2");
 	paddle2.setPosition(WIDTH - PADDLEW - 20, 20);
 	paddle2.setColor(Color4b.White);
 	paddle2.speed = 0.2;
-	objects["paddle2"] = paddle2;
+	playingObjects[paddle2.name] = paddle2;
 
-	GameObject ball = new GameObject(0, 0, BALLW, BALLH);
+	GameObject ball = new GameObject(0, 0, BALLW, BALLH, "ball");
 	ball.setPosition(50, 50);
 	ball.setColor(Color4b.White);
 	ball.speed = 0.2;
-	objects["ball"] = ball;
+	playingObjects[ball.name] = ball;
 	//float ballmovex, ballmovey;
 	//int ballmovex = 1;
 	//int ballmovey = 1;
@@ -90,7 +95,8 @@ void main() {
 	bool running = true;
 	Event evt;
 	StopWatch sw = StopWatch();
-	state["playing"] = new GameStatePlaying(objects, win);
+	state["title"] = new GameStateTitle(titleObjects, win);
+	state["playing"] = new GameStatePlaying(playingObjects, win);
 
 	while(running) {
 		/*ballmovex = ball.speed * sw.getElapsedTicks();
@@ -140,6 +146,6 @@ void main() {
 		win.draw(paddle2);
 		win.draw(ball);
 		win.display();*/
-		running = state["playing"].render();
+		running = state["title"].render();
 	}
 }

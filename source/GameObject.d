@@ -13,9 +13,11 @@ final class GameObject : Shape {
   int width_;
   float speed_ = 0;
 
+  string name_;
+
   public:
 
-  this(in int x, in int y, in int width, in int height) {
+  this(in int x, in int y, in int width, in int height, in string name) {
     super(Geometry.Quads,
       [
       Vertex(x, y),
@@ -27,12 +29,14 @@ final class GameObject : Shape {
 
       width_ = width;
       height_ = height;
+      name_ = name;
   }
 
-  this(in Vector2f first, in Vector2f second) {
+  this(in Vector2f first, in Vector2f second, in string name) {
     super(Geometry.Lines);
     append(first);
     append(second);
+    name_ = name;
   }
 
   @property int height() const {
@@ -41,6 +45,14 @@ final class GameObject : Shape {
 
   @property void height(int h) {
     height_ = h;
+  }
+
+  @property string name() const {
+    return name_;
+  }
+
+  @property void name(string n) {
+    name_ = n;
   }
 
   @property float speed() const {
