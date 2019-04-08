@@ -53,11 +53,11 @@ void main() {
 	field.fill = Shape.Fill.Line;
 	//objects["field"] = field;
 
-	GameObject topField = new GameObject(Vector2f(5, 5), Vector2f(WIDTH - 10, 5));
+	GameObject topField = new GameObject(Vector2f(5, 5), Vector2f(WIDTH - 5, 5));
 	topField.setColor(Color4b.White);
 	objects["topField"] = topField;
 
-	GameObject bottomField = new GameObject(Vector2f(5, HEIGHT - 15), Vector2f(WIDTH - 10, HEIGHT - 15));
+	GameObject bottomField = new GameObject(Vector2f(5, HEIGHT - 15), Vector2f(WIDTH - 5, HEIGHT - 15));
 	bottomField.setColor(Color4b.White);
 	objects["bottomField"] = bottomField;
 
