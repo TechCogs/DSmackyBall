@@ -60,12 +60,12 @@ void main() {
 	titleObjects[topField.name] = topField;
 	playingObjects[topField.name] = topField;
 
-	GameObject bottomField = new GameObject(Vector2f(5, HEIGHT - 15), Vector2f(WIDTH - 5, HEIGHT - 15), "bottomField");
+	GameObject bottomField = new GameObject(Vector2f(5, HEIGHT - 10), Vector2f(WIDTH - 5, HEIGHT - 10), "bottomField");
 	bottomField.setColor(Color4b.White);
 	titleObjects[bottomField.name] = bottomField;
 	playingObjects[bottomField.name] = bottomField;
 
-	GameObject center = new GameObject(Vector2f((WIDTH - 10) / 2, 5), Vector2f((WIDTH - 10) / 2, HEIGHT - 15), "center");
+	GameObject center = new GameObject(Vector2f((WIDTH - 10) / 2, 5), Vector2f((WIDTH - 10) / 2, HEIGHT - 10), "center");
 	center.setColor(Color4b.White);
 	//center.fill = Shape.Fill.Line;
 	titleObjects[center.name] = center;
