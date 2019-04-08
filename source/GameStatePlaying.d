@@ -17,6 +17,8 @@ class GameStatePlaying : GameState {
   int ballmovey = 1;
 
   float centerx;
+  float topField;
+  float bottomField;
 
   uint t;
 
@@ -24,7 +26,7 @@ class GameStatePlaying : GameState {
   bool p2moveDown = false;
 
   GameObject ball;
-  GameObject field;
+  //GameObject field;
   GameObject center;
   GameObject paddle1;
   GameObject paddle2;
@@ -34,11 +36,13 @@ class GameStatePlaying : GameState {
   this(ref GameObject[string] objects, ref Window win) {
     super(objects, win);
     ball = objects["ball"];
-    field = objects["field"];
+    //field = objects["field"];
     center = objects["center"];
     paddle1 = objects["paddle1"];
     paddle2 = objects["paddle2"];
     centerx = center.getVertices()[0].tupleof[0].x;
+    topField = objects["topField"].getVertices()[0].tupleof[0].y;
+    bottomField = objects["bottomField"].getVertices()[0].tupleof[0].y;
   }
 
   override bool render() {
@@ -73,21 +77,21 @@ class GameStatePlaying : GameState {
     ball.x = ball.x + ball.speed * ballmovex * t;
     ball.y = ball.y + ball.speed * ballmovey * t;
 
-    if (ball.x + ball.width >= field.width) {
+    /*if (ball.x + ball.width >= field.width) {
       ballmovex = -ballmovex;
       ball.x = field.width - ball.width;
-    }
-    if (ball.x <= field.x + 5) {
+    }*/
+    /*if (ball.x <= field.x + 5) {
       ballmovex = -ballmovex;
       ball.x = field.x + 5;
-    }
-    if (ball.y <= field.y + 5) {
+    }*/
+    if (ball.y <= topField) {
       ballmovey = -ballmovey;
-      ball.y = field.y + 5;
+      ball.y = topField;
     }
-    if (ball.y + ball.height >= field.height) {
+    if (ball.y + ball.height >= bottomField) {
       ballmovey = -ballmovey;
-      ball.y = field.height - ball.height;
+      ball.y = bottomField - ball.height;
     }
 
     /*if (ball.x + ball.width >= paddle2.x && ball.y >= paddle2.y && ball.y <= paddle2.y + paddle2.height) {

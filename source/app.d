@@ -51,11 +51,19 @@ void main() {
 	field.setPosition(0, 0);
 	field.setColor(Color4b.White);
 	field.fill = Shape.Fill.Line;
-	objects["field"] = field;
+	//objects["field"] = field;
 
-	GameObject center = new GameObject(Vector2f((WIDTH - 10) / 2, 5), Vector2f((WIDTH - 10) / 2, HEIGHT - 10));
+	GameObject topField = new GameObject(Vector2f(5, 5), Vector2f(WIDTH - 10, 5));
+	topField.setColor(Color4b.White);
+	objects["topField"] = topField;
+
+	GameObject bottomField = new GameObject(Vector2f(5, HEIGHT - 15), Vector2f(WIDTH - 10, HEIGHT - 15));
+	bottomField.setColor(Color4b.White);
+	objects["bottomField"] = bottomField;
+
+	GameObject center = new GameObject(Vector2f((WIDTH - 10) / 2, 5), Vector2f((WIDTH - 10) / 2, HEIGHT - 15));
 	center.setColor(Color4b.White);
-	center.fill = Shape.Fill.Line;
+	//center.fill = Shape.Fill.Line;
 	objects["center"] = center;
 
 	GameObject paddle1 = new GameObject(0, 0, PADDLEW, PADDLEH);
