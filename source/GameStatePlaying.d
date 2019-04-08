@@ -116,21 +116,21 @@ class GameStatePlaying : GameState {
       }
     }
 
-    else if (ball.x <= paddle1.x) {
+    else if (ball.x <= paddle1.x + paddle1.width) {
       // Ball hits on top edge of the paddle
       if (ball.y + ball.height >= paddle1.y && ball.y <= paddle1.y) {
         ballmovex = -ballmovex;
-        ball.x = paddle1.x;
+        ball.x = paddle1.x + paddle1.width;
       }
       // Ball hits in the middle of paddle
       else if (ball.y >= paddle1.y && ball.y + ball.height <= paddle1.y + paddle1.height) {
         ballmovex = -ballmovex;
-        ball.x = paddle1.x;
+        ball.x = paddle1.x + paddle1.width;
       }
       // Ball hits on the bottom edge of the paddle
       else if (ball.y + ball.height >= paddle1.y + paddle1.height && ball.y <= paddle1.y + paddle1.height) {
         ballmovex = -ballmovex;
-        ball.x = paddle1.x;
+        ball.x = paddle1.x + paddle1.width;
       }
     }
 
