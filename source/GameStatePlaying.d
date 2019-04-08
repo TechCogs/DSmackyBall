@@ -5,9 +5,11 @@ import std.stdio;
 import Dgame.Window;
 import Dgame.Window.Event;
 import Dgame.System.Keyboard;
+import Dgame.System.StopWatch;
 
 import GameObject;
 import GameState;
+import StateTracker;
 
 class GameStatePlaying : GameState {
 
@@ -45,7 +47,7 @@ class GameStatePlaying : GameState {
     bottomField = objects["bottomField"].getVertices()[0].tupleof[0].y;
   }
 
-  override bool render() {
+  override void render() {
     while(win.poll(&evt)) {
       switch(evt.type) {
         case Event.Type.KeyDown:
@@ -65,15 +67,15 @@ class GameStatePlaying : GameState {
           }
         break;
         case Event.Type.Quit:
-          running = false;
+          StateTracker.running = false;
         break;
 
         default: break;
       }
     }
 
-    t = sw.getElapsedTicks;
-    sw.reset();
+    t = StateTracker.sw.getElapsedTicks;
+    StateTracker.sw.reset();
     ball.x = ball.x + ball.speed * ballmovex * t;
     ball.y = ball.y + ball.speed * ballmovey * t;
 
@@ -155,6 +157,5 @@ class GameStatePlaying : GameState {
       win.draw(object);
     }
     win.display();
-    return running;
   }
 }

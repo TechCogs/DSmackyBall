@@ -2,9 +2,9 @@ module GameState;
 
 import Dgame.Window;
 import Dgame.Window.Event;
-import Dgame.System.StopWatch;
 
 import GameObject;
+import StateTracker;
 
 class GameState {
 
@@ -12,27 +12,22 @@ class GameState {
 
   Event evt;
 
-  bool running = true;
-
   GameObject[string]* objects;
   Window* win;
-
-  StopWatch sw;
 
   public:
 
   this(ref GameObject[string] objects, ref Window win) {
     this.objects = &objects;
     this.win = &win;
-    sw = StopWatch();
   }
 
-  bool render() {
+  void render() {
 
     while(win.poll(&evt)) {
       switch(evt.type) {
         case Event.Type.Quit:
-          running = false;
+          StateTracker.running = false;
         break;
 
         default: break;
@@ -44,6 +39,5 @@ class GameState {
       win.draw(object);
     }
     win.display();
-    return running;
   }
 }

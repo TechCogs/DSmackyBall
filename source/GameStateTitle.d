@@ -8,22 +8,17 @@ import Dgame.System.Keyboard;
 
 import GameObject;
 import GameState;
+import StateTracker;
 
 class GameStateTitle : GameState {
 
   private:
-
-  int ballmovex = 1;
-  int ballmovey = 1;
 
   float centerx;
   float topField;
   float bottomField;
 
   uint t;
-
-  bool p2moveUp = false;
-  bool p2moveDown = false;
 
   GameObject center;
 
@@ -37,41 +32,27 @@ class GameStateTitle : GameState {
     bottomField = objects["bottomField"].getVertices()[0].tupleof[0].y;
   }
 
-  override bool render() {
+  override void render() {
     while(win.poll(&evt)) {
       switch(evt.type) {
         case Event.Type.KeyDown:
-          if (evt.keyboard.key == Keyboard.Key.Up) {
-            p2moveUp = true;
-          }
-          else if (evt.keyboard.key == Keyboard.Key.Down) {
-            p2moveDown = true;
-          }
-        break;
-        case Event.Type.KeyUp:
-          if (evt.keyboard.key == Keyboard.Key.Up) {
-            p2moveUp = false;
-          }
-          else if (evt.keyboard.key == Keyboard.Key.Down) {
-            p2moveDown = false;
+          if (evt.keyboard.key == Keyboard.Key.Return) {
+            StateTracker.state = "playing";
+            StateTracker.sw.reset();
           }
         break;
         case Event.Type.Quit:
-          running = false;
+          StateTracker.running = false;
         break;
 
         default: break;
       }
     }
 
-    t = sw.getElapsedTicks;
-    sw.reset();
-
     win.clear();
     foreach (object; *objects) {
       win.draw(object);
     }
     win.display();
-    return running;
   }
 }

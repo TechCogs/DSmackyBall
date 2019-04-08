@@ -23,6 +23,7 @@ import GameObject;
 import GameState;
 import GameStateTitle;
 import GameStatePlaying;
+import StateTracker;
 
 enum WIDTH = 800;
 enum HEIGHT = 600;
@@ -92,13 +93,12 @@ void main() {
 	//int ballmovex = 1;
 	//int ballmovey = 1;
 
-	bool running = true;
 	Event evt;
 	StopWatch sw = StopWatch();
 	state["title"] = new GameStateTitle(titleObjects, win);
 	state["playing"] = new GameStatePlaying(playingObjects, win);
 
-	while(running) {
+	while(StateTracker.running) {
 		/*ballmovex = ball.speed * sw.getElapsedTicks();
 		ballmovey = ballmovex;*/
 		//immutable uint t = sw.getElapsedTicks;
@@ -146,6 +146,6 @@ void main() {
 		win.draw(paddle2);
 		win.draw(ball);
 		win.display();*/
-		running = state["title"].render();
+		state[StateTracker.state].render();
 	}
 }
