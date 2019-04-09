@@ -22,6 +22,9 @@ class GameStateTitle : GameState {
 
   uint t;
 
+  uint textx;
+  uint texty;
+
   GameObject center;
 
   public:
@@ -32,11 +35,14 @@ class GameStateTitle : GameState {
     centerx = center.getVertices()[0].tupleof[0].x;
     topField = objects["topField"].getVertices()[0].tupleof[0].y;
     bottomField = objects["bottomField"].getVertices()[0].tupleof[0].y;
+    textx = win.getSize().width / 2;
+    texty = win.getSize().height / 2;
   }
 
   override void render() {
     Font font = Font("resources/font.ttf", 16);
     Text title = new Text(font, "Press Enter");
+    title.setPosition(textx, texty);
     while(win.poll(&evt)) {
       switch(evt.type) {
         case Event.Type.KeyDown:
