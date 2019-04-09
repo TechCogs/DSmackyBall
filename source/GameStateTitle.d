@@ -4,6 +4,8 @@ import std.stdio;
 
 import Dgame.Window;
 import Dgame.Window.Event;
+import Dgame.Graphic.Text;
+import Dgame.System.Font;
 import Dgame.System.Keyboard;
 
 import GameObject;
@@ -21,6 +23,8 @@ class GameStateTitle : GameState {
   uint t;
 
   GameObject center;
+  Font font;
+  Text title;
 
   public:
 
@@ -30,6 +34,8 @@ class GameStateTitle : GameState {
     centerx = center.getVertices()[0].tupleof[0].x;
     topField = objects["topField"].getVertices()[0].tupleof[0].y;
     bottomField = objects["bottomField"].getVertices()[0].tupleof[0].y;
+    font = Font("resources/font.ttf", 16);
+    title = new Text(font, "Press Enter");
   }
 
   override void render() {
@@ -53,6 +59,7 @@ class GameStateTitle : GameState {
     foreach (object; *objects) {
       win.draw(object);
     }
+    win.draw(title);
     win.display();
   }
 }
