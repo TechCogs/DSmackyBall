@@ -57,6 +57,9 @@ class GameStatePlaying : GameState {
           else if (evt.keyboard.key == Keyboard.Key.Down) {
             p2moveDown = true;
           }
+          else if (evt.keyboard.key == Keyboard.Key.P) {
+            StateTracker.state = "pause";
+          }
         break;
         case Event.Type.KeyUp:
           if (evt.keyboard.key == Keyboard.Key.Up) {
