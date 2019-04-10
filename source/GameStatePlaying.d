@@ -37,6 +37,9 @@ class GameStatePlaying : GameState {
   GameObject paddle1;
   GameObject paddle2;
 
+  Text p1display;
+  Text p2display;
+
   public:
 
   this(ref GameObject[string] objects, ref Window win, ref Font font) {
@@ -49,6 +52,10 @@ class GameStatePlaying : GameState {
     centerx = center.getVertices()[0].tupleof[0].x;
     topField = objects["topField"].getVertices()[0].tupleof[0].y;
     bottomField = objects["bottomField"].getVertices()[0].tupleof[0].y;
+    p1display = new Text(font, "0");
+    p2display = new Text(font, "0");
+    p1display.setPosition(5, 10);
+    p2display.setPosition(win.getSize().width - p2display.width() - 20, 10);
   }
 
   override void render() {
@@ -105,10 +112,12 @@ class GameStatePlaying : GameState {
     if (ball.x > paddle2.x + 50) {
       ball.setPosition(paddle1.x + 10, paddle1.y + 10);
       ++p1score;
+      p1display.setData(p1score);
     }
     else if (ball.x < paddle1.x - 50) {
       ball.setPosition(paddle2.x - 10, paddle2.y - 10);
       ++p2score;
+      p2display.setData(p2score);
     }
 
     /*if (ball.x + ball.width >= paddle2.x && ball.y >= paddle2.y && ball.y <= paddle2.y + paddle2.height) {
@@ -171,6 +180,8 @@ class GameStatePlaying : GameState {
     foreach (object; *objects) {
       win.draw(object);
     }
+    win.draw(p1display);
+    win.draw(p2display);
     win.display();
   }
 }
