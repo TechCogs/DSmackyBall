@@ -99,10 +99,10 @@ class GameStatePlaying : GameState {
       ball.y = bottomField - ball.height;
     }
     if (ball.x > paddle2.x + 50) {
-      ball.setPosition(50, 50);
+      ball.setPosition(paddle1.x + 10, paddle1.y + 10);
     }
     else if (ball.x < paddle1.x - 50) {
-      ball.setPosition(50, 50);
+      ball.setPosition(paddle2.x - 10, paddle2.y - 10);
     }
 
     /*if (ball.x + ball.width >= paddle2.x && ball.y >= paddle2.y && ball.y <= paddle2.y + paddle2.height) {
