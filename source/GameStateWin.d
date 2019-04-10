@@ -28,6 +28,7 @@ class GameStateWin : GameState {
   GameObject center;
 
   Text message;
+  Text pressEnter;
 
   public:
 
@@ -38,9 +39,11 @@ class GameStateWin : GameState {
     topField = objects["topField"].getVertices()[0].tupleof[0].y;
     bottomField = objects["bottomField"].getVertices()[0].tupleof[0].y;
     message = new Text(font);
+    pressEnter = new Text(font, "Press Enter to Play Again");
     textx = win.getSize().width / 2;
     texty = win.getSize().height / 2;
     message.setPosition(textx, texty);
+    pressEnter.setPosition(textx, texty + 16);
   }
 
   override void render() {
@@ -66,6 +69,7 @@ class GameStateWin : GameState {
       win.draw(object);
     }
     win.draw(message);
+    win.draw(pressEnter);
     win.display();
   }
 

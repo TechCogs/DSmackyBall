@@ -115,7 +115,7 @@ class GameStatePlaying : GameState {
       p1display.setData(p1score);
       if (p1score == 3) {
         StateTracker.state = "win";
-        StateTracker.message = "Player 1";
+        StateTracker.message = "Player 1 Wins!";
         p1score = 0;
         p2score = 0;
         p1display.setData(p1score);
@@ -129,7 +129,7 @@ class GameStatePlaying : GameState {
       p2display.setData(p2score);
       if (p2score == 3) {
         StateTracker.state = "win";
-        StateTracker.message = "Player 2";
+        StateTracker.message = "Player 2 Wins!";
         p1score = 0;
         p2score = 0;
         p1display.setData(p1score);
