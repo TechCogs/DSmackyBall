@@ -3,8 +3,10 @@ module GameStatePlaying;
 import std.stdio;
 
 import Dgame.Window;
+import Dgame.Graphic.Text;
 import Dgame.Window.Event;
 import Dgame.System.Keyboard;
+import Dgame.System.Font;
 import Dgame.System.StopWatch;
 
 import GameObject;
@@ -37,7 +39,7 @@ class GameStatePlaying : GameState {
 
   public:
 
-  this(ref GameObject[string] objects, ref Window win) {
+  this(ref GameObject[string] objects, ref Window win, ref Font font) {
     super(objects, win);
     ball = objects["ball"];
     //field = objects["field"];

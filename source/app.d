@@ -100,9 +100,11 @@ void main() {
 
 	Event evt;
 	StopWatch sw = StopWatch();
-	state["title"] = new GameStateTitle(titleObjects, win);
-	state["playing"] = new GameStatePlaying(playingObjects, win);
-	state["pause"] = new GameStatePause(pauseObjects, win);
+	import Dgame.System.Font;
+	Font font = Font("resources/font.ttf", 16);
+	state["title"] = new GameStateTitle(titleObjects, win, font);
+	state["playing"] = new GameStatePlaying(playingObjects, win, font);
+	state["pause"] = new GameStatePause(pauseObjects, win, font);
 
 	while(StateTracker.running) {
 		/*ballmovex = ball.speed * sw.getElapsedTicks();
