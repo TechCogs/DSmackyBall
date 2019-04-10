@@ -17,6 +17,8 @@ class GameStatePlaying : GameState {
 
   int ballmovex = 1;
   int ballmovey = 1;
+  int p1score = 0;
+  int p2score = 0;
 
   float centerx;
   float topField;
@@ -100,9 +102,11 @@ class GameStatePlaying : GameState {
     }
     if (ball.x > paddle2.x + 50) {
       ball.setPosition(paddle1.x + 10, paddle1.y + 10);
+      ++p1score;
     }
     else if (ball.x < paddle1.x - 50) {
       ball.setPosition(paddle2.x - 10, paddle2.y - 10);
+      ++p2score;
     }
 
     /*if (ball.x + ball.width >= paddle2.x && ball.y >= paddle2.y && ball.y <= paddle2.y + paddle2.height) {
