@@ -37,7 +37,7 @@ class GameStateTitle : GameState {
     centerx = center.getVertices()[0].tupleof[0].x;
     topField = objects["topField"].getVertices()[0].tupleof[0].y;
     bottomField = objects["bottomField"].getVertices()[0].tupleof[0].y;
-    title = new Text(font, "Press Enter");
+    title = new Text(font, "Press Enter to Play");
     textx = win.getSize().width / 2;
     texty = win.getSize().height / 2;
     title.setPosition(textx, texty);
