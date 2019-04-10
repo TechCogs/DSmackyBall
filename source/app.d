@@ -24,6 +24,7 @@ import GameState;
 import GameStateTitle;
 import GameStatePlaying;
 import GameStatePause;
+import GameStateWin;
 import StateTracker;
 
 enum WIDTH = 800;
@@ -43,6 +44,7 @@ void main() {
 	GameObject[string] titleObjects;
 	GameObject[string] playingObjects;
 	GameObject[string] pauseObjects;
+	GameObject[string] winObjects;
 	GameState[string] state;
 
 	/*Vertex[4] v;
@@ -63,12 +65,14 @@ void main() {
 	titleObjects[topField.name] = topField;
 	playingObjects[topField.name] = topField;
 	pauseObjects[topField.name] = topField;
+	winObjects[topField.name] = topField;
 
 	GameObject bottomField = new GameObject(Vector2f(5, HEIGHT - 10), Vector2f(WIDTH - 5, HEIGHT - 10), "bottomField");
 	bottomField.setColor(Color4b.White);
 	titleObjects[bottomField.name] = bottomField;
 	playingObjects[bottomField.name] = bottomField;
 	pauseObjects[bottomField.name] = bottomField;
+	winObjects[bottomField.name] = bottomField;
 
 	GameObject center = new GameObject(Vector2f((WIDTH - 10) / 2, 5), Vector2f((WIDTH - 10) / 2, HEIGHT - 10), "center");
 	center.setColor(Color4b.White);
@@ -76,6 +80,7 @@ void main() {
 	titleObjects[center.name] = center;
 	playingObjects[center.name] = center;
 	pauseObjects[center.name] = center;
+	winObjects[center.name] = center;
 
 	GameObject paddle1 = new GameObject(0, 0, PADDLEW, PADDLEH, "paddle1");
 	paddle1.setPosition(20, 20);
@@ -105,6 +110,7 @@ void main() {
 	state["title"] = new GameStateTitle(titleObjects, win, font);
 	state["playing"] = new GameStatePlaying(playingObjects, win, font);
 	state["pause"] = new GameStatePause(pauseObjects, win, font);
+	state["win"] = new GameStateWin(winObjects, win, font);
 
 	while(StateTracker.running) {
 		/*ballmovex = ball.speed * sw.getElapsedTicks();

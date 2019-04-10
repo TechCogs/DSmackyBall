@@ -113,11 +113,29 @@ class GameStatePlaying : GameState {
       ball.setPosition(paddle1.x + 10, paddle1.y + 10);
       ++p1score;
       p1display.setData(p1score);
+      if (p1score == 3) {
+        StateTracker.state = "win";
+        StateTracker.message = "Player 1";
+        p1score = 0;
+        p2score = 0;
+        p1display.setData(p1score);
+        p2display.setData(p2score);
+        ball.setPosition(50, 50);
+      }
     }
     else if (ball.x < paddle1.x - 50) {
       ball.setPosition(paddle2.x - 10, paddle2.y - 10);
       ++p2score;
       p2display.setData(p2score);
+      if (p2score == 3) {
+        StateTracker.state = "win";
+        StateTracker.message = "Player 2";
+        p1score = 0;
+        p2score = 0;
+        p1display.setData(p1score);
+        p2display.setData(p2score);
+        ball.setPosition(50, 50);
+      }
     }
 
     /*if (ball.x + ball.width >= paddle2.x && ball.y >= paddle2.y && ball.y <= paddle2.y + paddle2.height) {
