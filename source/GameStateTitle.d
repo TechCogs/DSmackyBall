@@ -5,6 +5,7 @@ import std.stdio;
 import Dgame.Window;
 import Dgame.Window.Event;
 import Dgame.Graphic.Text;
+import Dgame.Graphic.Color;
 import Dgame.System.Font;
 import Dgame.System.Keyboard;
 
@@ -41,9 +42,13 @@ class GameStateTitle : GameState {
     topField = objects["topField"].getVertices()[0].tupleof[0].y;
     bottomField = objects["bottomField"].getVertices()[0].tupleof[0].y;
     title = new Text(font, "DSmackyBall");
+    title.foreground = Color4b.White;
     copyright = new Text(font, "Copyright (c) 2019");
+    copyright.foreground = Color4b.White;
     devName = new Text(font, "Tech Cogs");
+    devName.foreground = Color4b.White;
     pressEnter = new Text(font, "Press Enter to Play");
+    pressEnter.foreground = Color4b.White;
     textx = win.getSize().width / 2;
     texty = win.getSize().height / 2;
     title.setPosition(textx, texty);
